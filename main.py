@@ -24,9 +24,7 @@ app = flask.Flask(__name__)
 def root():
     return f'<p>{len(db)}</p>'
 
-def flaskThread():
-    app.run(debug=True, use_reloader=False)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     threading.Thread(target=pingThread, daemon=True).start()
-    threading.Thread(target=flaskThread, daemon=True).start()
+    app.run(debug=True)
