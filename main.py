@@ -7,7 +7,7 @@ from tinyflux import TinyFlux, Point
 
 IP_TO_PING = '192.168.0.1'
 PING_INTERVAL_S = 1
-DATABASE_FILE = 'db\pingData.tinyflux'
+DATABASE_FILE = "pingData.tinyflux"
 
 db = TinyFlux(DATABASE_FILE)
 
