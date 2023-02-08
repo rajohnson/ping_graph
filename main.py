@@ -1,11 +1,12 @@
 import datetime
-import flask
-import ping3
 import threading
 import time
-from tinyflux import TinyFlux, Point
 
-IP_TO_PING = '192.168.0.1'
+import flask
+import ping3
+from tinyflux import Point, TimeQuery, TinyFlux
+
+IP_TO_PING = "192.168.0.1"
 PING_INTERVAL_S = 1
 DATABASE_FILE = "pingData.tinyflux"
 
@@ -27,9 +28,11 @@ def pingThread():
 
 app = flask.Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def root():
-    return f'<p>{len(db)}</p>'
+    return f"<p>{len(db)}</p>"
+
 
 
 if __name__ == "__main__":
