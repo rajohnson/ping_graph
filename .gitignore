@@ -1,4 +1,4 @@
-db/
+*.tinyflux
 .vscode/
 
 # Byte-compiled / optimized / DLL files
