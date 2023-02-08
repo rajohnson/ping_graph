@@ -11,11 +11,18 @@ DATABASE_FILE = "pingData.tinyflux"
 
 db = TinyFlux(DATABASE_FILE)
 
+
 def pingThread():
     while True:
-        p = Point(time=datetime.datetime.now(),fields={"ping_ms": ping3.ping(IP_TO_PING, unit="ms")})
+        p = Point(
+            measurement="Ping time",
+            tags={"IP": IP_TO_PING},
+            fields={"ping_ms": ping3.ping(IP_TO_PING, unit="ms")},
+        )
         db.insert(p)
-        time.sleep(PING_INTERVAL_S)  # there is a little extra time from the ping, but not dealing with it here.
+        # The interval isn't met perfectly with the time taken for the ping,
+        # but it is close enough that it won't be worth dealing with here.
+        time.sleep(PING_INTERVAL_S)
 
 
 app = flask.Flask(__name__)
