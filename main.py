@@ -46,6 +46,11 @@ def last_minute():
     return f"<p>{db.search(q)}</p>"
 
 
+@app.route("/all")
+def all_readings():
+    return f"<p>{db.all()}</p>"
+
+
 if __name__ == "__main__":
     threading.Thread(target=pingThread, daemon=True).start()
     app.run(debug=True)
