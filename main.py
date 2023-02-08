@@ -34,6 +34,17 @@ def root():
     return f"<p>{len(db)}</p>"
 
 
+@app.route("/last")
+def most_recent():
+    q = TimeQuery() > datetime.datetime.now() - datetime.timedelta(minutes=1)
+    return f"<p>{db.get(q)}</p>"
+
+
+@app.route("/lastmin")
+def last_minute():
+    q = TimeQuery() > datetime.datetime.now() - datetime.timedelta(minutes=1)
+    return f"<p>{db.search(q)}</p>"
+
 
 if __name__ == "__main__":
     threading.Thread(target=pingThread, daemon=True).start()
