@@ -48,7 +48,7 @@ def last_minute():
 
 @app.route("/all")
 def all_readings():
-    return f"<p>{db.all()}</p>"
+    return {point.time.strftime("%m/%d/%Y, %H:%M:%S"): point.fields['ping_ms'] for point in db.all()}
 
 
 if __name__ == "__main__":
